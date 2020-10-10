@@ -1,25 +1,17 @@
-﻿define(['loading'],
-    function (loading) {
+﻿define(["require", "loading", "dialogHelper", "formDialogStyle", "emby-checkbox", "emby-select", "emby-toggle"],
+    function(require, loading, dialogHelper) {
 
         var pluginId = "80c81cfd3a484f6ca146cce1ad31ffd8";
-
-        
+             
         function getUserRecipientHtml(user) {
             var html = "";
-
-            html += '<div class="listItem  sortableOption" >';
-            html += '<label class="listItemCheckboxContainer emby-checkbox-label" > ';
-            html += '<input name="' + user.Name + '" type="checkbox" is="emby-checkbox" class="emby-checkbox"  data-embycheckbox="true" >';
-            html += '<span class="checkboxLabel" > ' + user.Name + '</span >';
-            html += '<span class="emby-checkbox-focushelper" ></span >';
-            html += '<span class="checkboxOutline" > ';
-            html += '<i class="md-icon checkboxIcon checkboxIcon-checked" ></i >';
-            html += '<i class="md-icon checkboxIcon checkboxIcon-unchecked" ></i >';
-            html += '</span>';
-            html += '</label> ';
-
-            html += '</div></div>';
-
+              
+            html += '<div class="inputContainer" style="display: flex;">';
+            html += '<label style="width: auto;" class="emby-toggle-label">';
+            html += '<input is="emby-toggle" type="checkbox" id="' + user.Name + '" class="noautofocus emby-toggle emby-toggle-focusring">';
+            html += '<span class="toggleLabel">' + user.Name + '</span>';
+            html += '</label>';
+            html += '</div>';
 
             return html;
         };
@@ -44,25 +36,17 @@
             var userListItems = view.querySelectorAll('#recipients input');
             for (var i = 0; i < userListItems.length; i++) {
                 if (userListItems[i].checked)
-                    r.push(userListItems[i].name);
+                    r.push(userListItems[i].id);
             }
             return r;
         }
 
         function loadPageData(view) {
 
-            ApiClient.getJSON(ApiClient.getUrl("/MessageHeader")).then(
-                (imgInfo) => {
-                    view.querySelector("#pluginThumb").style.backgroundImage =
-                        "url('data:image/png;base64," + imgInfo.Image + "')";
-                });
-            
-
             ApiClient.getPluginConfiguration(pluginId).then(function (config) {
 
                 ApiClient.getUsers().then(function (users) {
                     users.forEach(function (user) {
-
                         view.querySelector('#recipients').innerHTML += getUserRecipientHtml(user);
                     });
                 });
@@ -92,8 +76,7 @@
                             config.Messages.forEach((m) => {
                                 if (m.Id !== e.target.parentElement.id)
                                     messages.push(m);
-                            });
-
+                            });  
 
                             config.Messages = messages;
 
@@ -108,9 +91,7 @@
 
                         });
 
-                    }
-
-                    
+                    } 
                 });
 
                 view.querySelector('#createMessage').addEventListener('click', () => {

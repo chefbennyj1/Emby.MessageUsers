@@ -28,8 +28,6 @@ namespace MessageUsers
             var type = GetType();
             return type.Assembly.GetManifestResourceStream(type.Namespace + ".thumb.png");
         }
-        
-
 
         public IEnumerable<PluginPageInfo> GetPages() => new[]
         {

@@ -1,44 +1,51 @@
-﻿
-<div data-role="page" class="type-interior pluginConfigurationPage MessageConfigPage" data-require="emby-button,emby-input,emby-select,emby-checkbox" data-controller="__plugin/messagePluginConfigurationPageJS">
-
+﻿<div data-role="page" class="type-interior pluginConfigurationPage MessageConfigPage" data-require="emby-button,emby-input,emby-select,emby-checkbox" data-controller="__plugin/messagePluginConfigurationPageJS">
     <div class="content-primary">
+        <div class="verticalSection verticalSection">
+            <div class="sectionTitleContainer sectionTitleContainer-cards align-items-center">
+                <div class="sectionTitleContainer sectionTitleContainer-cards align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="55" height="55" viewBox="0 0 25 25" style="fill: lightblue;">
+                        <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.11 18 22 17.11 22 16V4C22 2.9 21.11 2 20 2M20 16H6L4 18V4H20M17 11H15V9H17M13 11H11V9H13M9 11H7V9H9" ></path>
+                    </svg>
+                    <h2 class="sectionTitle sectionTitle-cards" style="padding-bottom: 2em;">Message</h2>
+                    <hr/>
+                    <div style="padding-top: 2em">
 
-        <form id="mainFormConfig" style="padding-top:8%">
+                        <div class="" style="padding: 2em;">
+                            <div class="detailSectionHeader" style="padding-bottom: 2em">
+                                <h2 style="margin: .6em 0; vertical-align: middle; display: inline-block;">Headline</h2>
+                                <input type="text" class="emby-input" id="header"/>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="" style="padding: 2em;">
+                            <div class="detailSectionHeader" style="padding-bottom: 2em">
+                                <h2 style="margin: .6em 0; vertical-align: middle; display: inline-block;">Text</h2>
+                                <textarea rows="5" style="width: 100%" type="text" is="emby-input" id="text" spellcheck="true"></textarea>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="" style="padding: 2em;">
+                            <div class="detailSectionHeader" style="padding-bottom: 2em">
+                                <h2 style="margin: .6em 0; vertical-align: middle; display: inline-block;">Recipients:</h2>
+                                <div id="recipients" class="checkboxList paperList checkboxList-paperList">
 
-            <div class="paperlist" id="pluginThumb" style="display: flex;align-items: center;background: white;height: 41vh; border-radius: 10px; background-size: cover;background-repeat: no-repeat;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div style="padding-top: 2em">
+                            <div class="" style="padding: 2em;">
+                                <button is="emby-button" class="btnTry raised button-submit block emby-button" style="margin: 2em auto; width: 50%;" id="createMessage">Create message</button>
+                            </div>
+                            <h2>Saved Messages:</h2>
+                            <h3>These are messages which have yet to be delivered to users. You can delete these messages.</h3>
+                            <div class="paperlist" data-role="listview" data-inset="true" data-split-icon="delete" id="savedMessages"></div>
+                        </div>
 
-            <div class="row">
-                <h2>Headline:</h2>
-                <input type="text" is="emby-input" id="header" />
+                    </div>
+                </div>
             </div>
-
-            <div class="row">
-                <h2>Text:</h2>
-                <textarea rows="5" style="width:100%" type="text" is="emby-input" id="text" spellcheck="true"></textarea>
-            </div>
-
-
-            <h2>Recipients:</h2>
-
-            <div id="recipients" class="checkboxList paperList checkboxList-paperList">
-
-            </div>
-
-
-            <div class="row">
-                <h2 id="messageId">Message ID:</h2>
-
-            </div>
-
-            <div class="row">
-                <button is="emby-button" id="createMessage" type="button" data-theme="b" class="raised button-submit block">Retain Message Until User Login</button>
-            </div>
-
-            <h2>Saved Messages:</h2>
-            <h3>These are messages which have yet to be delivered to users. You can delete these messages.</h3>
-            <div class="paperlist" data-role="listview" data-inset="true" data-split-icon="delete" id="savedMessages"></div>
-        </form>
-
+        </div>
     </div>
-
 </div>
+
