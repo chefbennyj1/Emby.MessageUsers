@@ -13,6 +13,6 @@
   <EmbeddedResource Include="thumb.png" />
 </ItemGroup>
 
-<ItemGroup> <PackageReference Include="mediabrowser.server.core" Version="4.2.0.40" /> <PackageReference Include="System.Memory" Version="4.5.3" /> </ItemGroup>
+<ItemGroup> <PackageReference Include="mediabrowser.server.core" Version="4.9.1.90" /> <PackageReference Include="System.Memory" Version="4.5.3" /> </ItemGroup>
 
 </Project>
